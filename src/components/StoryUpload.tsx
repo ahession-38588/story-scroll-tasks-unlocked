@@ -95,18 +95,23 @@ const StoryUpload: React.FC<StoryUploadProps> = ({ onStoryUploaded }) => {
     }
   };
 
+  const getUploadAreaClasses = () => {
+    if (isDragging) {
+      return 'border-amber-400 bg-amber-50/50';
+    }
+    if (uploadStatus === 'success') {
+      return 'border-emerald-400 bg-emerald-50/50';
+    }
+    if (uploadStatus === 'error') {
+      return 'border-red-400 bg-red-50/50';
+    }
+    return 'border-amber-300 bg-gradient-to-br from-amber-50/30 to-orange-50/30 hover:border-amber-400';
+  };
+
   return (
     <div className="mb-8">
       <div
-        className={`relative border-2 border-dashed rounded-xl p-8 text-center transition-all duration-300 ${
-          isDragging 
-            ? 'border-amber-400 bg-amber-50/50' 
-            : uploadStatus === 'success'
-            ? 'border-emerald-400 bg-emerald-50/50'
-            : uploadStatus === 'error'
-            ? 'border-red-400 bg-red-50/50'
-            : 'border-amber-300 bg-gradient-to-br from-amber-50/30 to-orange-50/30 hover:border-amber-400'
-        }`}
+        className={`relative border-2 border-dashed rounded-xl p-8 text-center transition-all duration-300 ${getUploadAreaClasses()}`}
         onDrop={handleDrop}
         onDragOver={(e) => e.preventDefault()}
         onDragEnter={() => setIsDragging(true)}
