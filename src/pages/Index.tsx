@@ -1,10 +1,12 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Castle, Sparkles, ArrowLeft } from 'lucide-react';
+import { Castle, Sparkles, ArrowLeft, FileText } from 'lucide-react';
 import TaskCard from '../components/TaskCard';
 import StoryProgress from '../components/StoryProgress';
 import AddTaskForm from '../components/AddTaskForm';
+import StoryUpload from '../components/StoryUpload';
+import CustomStoryManager from '../components/CustomStoryManager';
 import { useTasks } from '../hooks/useTasks';
 
 const storyData = {
@@ -34,8 +36,13 @@ const Index = () => {
   const { storyId } = useParams();
   const { tasks, toggleTask, addTask } = useTasks();
   const completedTasks = tasks.filter(task => task.completed).length;
+  const [showCustomStory, setShowCustomStory] = useState(false);
   
   const currentStory = storyData[storyId as keyof typeof storyData] || storyData['enchanted-forest'];
+
+  const handleStoryUploaded = () => {
+    setShowCustomStory(true);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 relative overflow-hidden">
@@ -75,6 +82,32 @@ const Index = () => {
         {/* Story Progress */}
         <div className="mb-8">
           <StoryProgress completedTasks={completedTasks} totalTasks={tasks.length} />
+        </div>
+
+        {/* Custom Story Upload & Display */}
+        <div className="mb-8">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="font-cinzel font-bold text-2xl text-amber-900 flex items-center space-x-2">
+              <FileText className="w-6 h-6" />
+              <span>Your Custom Story</span>
+            </h2>
+            <button
+              onClick={() => setShowCustomStory(!showCustomStory)}
+              className="font-crimson text-amber-700 hover:text-amber-800 transition-colors"
+            >
+              {showCustomStory ? 'Hide' : 'Show'} Custom Story
+            </button>
+          </div>
+          
+          {showCustomStory && (
+            <div className="space-y-6">
+              <StoryUpload onStoryUploaded={handleStoryUploaded} />
+              <CustomStoryManager 
+                completedTasks={completedTasks} 
+                totalTasks={tasks.length} 
+              />
+            </div>
+          )}
         </div>
 
         {/* Add Task Form */}
