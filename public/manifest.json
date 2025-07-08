@@ -1,0 +1,18 @@
+
+{
+  "name": "Mystic Quest - Enchanted Task Tracker",
+  "short_name": "Mystic Quest",
+  "description": "A magical task tracker that unfolds an enchanted story",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#2D1810",
+  "theme_color": "#8B4513",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iNjQiIGZpbGw9IiM4QjQ1MTMiLz4KPHBhdGggZD0iTTEyOCAyNTZDMTI4IDMxMS4yIDIwMC44IDM1NiAyNTYgMzU2UzM4NCAzMTEuMiAzODQgMjU2UzMxMS4yIDEyOCAyNTYgMTI4UzEyOCAyMDAuOCAxMjggMjU2WiIgZmlsbD0iI0ZGRDcwMCIvPgo8cGF0aCBkPSJNMjU2IDIwOEMyODAuMzc0IDIwOCAyOTkuNzMzIDIyNy4zNTkgMjk5LjczMyAyNTEuNzMzQzI5OS43MzMgMjY5Ljg3NSAyODguNSAyODUuMDk0IDI3Mi4wNjcgMjkxLjYwN0wyNTYgMzIwSDIzOS45MzNMMjIzLjg2NyAyOTEuNjA3QzIwNy40MzMgMjg1LjA5NCAyMTIuMjY3IDI2OS44NzUgMjEyLjI2NyAyNTEuNzMzQzIxMi4yNjcgMjI3LjM1OSAyMzEuNjI2IDIwOCAyNTYgMjA4WiIgZmlsbD0iIzJEMTgxMCIvPgo8L3N2Zz4K",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

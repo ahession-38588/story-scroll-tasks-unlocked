@@ -1,24 +1,48 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>story-scroll-tasks-unlocked</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+    <title>Mystic Quest - Enchanted Task Tracker</title>
+    <meta name="description" content="A magical task tracker that unfolds an enchanted story as you complete your quests" />
+    <meta name="author" content="Mystic Realms" />
+    <meta name="theme-color" content="#8B4513" />
 
-    <meta property="og:title" content="story-scroll-tasks-unlocked" />
-    <meta property="og:description" content="Lovable Generated Project" />
+    <meta property="og:title" content="Mystic Quest - Enchanted Task Tracker" />
+    <meta property="og:description" content="A magical task tracker that unfolds an enchanted story" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Fantasy Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iNjQiIGZpbGw9IiM4QjQ1MTMiLz4KPHBhdGggZD0iTTEyOCAyNTZDMTI4IDMxMS4yIDIwMC44IDM1NiAyNTYgMzU2UzM4NCAzMTEuMiAzODQgMjU2UzMxMS4yIDEyOCAyNTYgMTI4UzEyOCAyMDAuOCAxMjggMjU2WiIgZmlsbD0iI0ZGRDcwMCIvPgo8cGF0aCBkPSJNMjU2IDIwOEMyODAuMzc0IDIwOCAyOTkuNzMzIDIyNy4zNTkgMjk5LjczMyAyNTEuNzMzQzI5OS43MzMgMjY5Ljg3NSAyODguNSAyODUuMDk0IDI3Mi4wNjcgMjkxLjYwN0wyNTYgMzIwSDIzOS45MzNMMjIzLjg2NyAyOTEuNjA3QzIwNy40MzMgMjg1LjA5NCAyMTIuMjY3IDI2OS44NzUgMjEyLjI2NyAyNTEuNzMzQzIxMi4yNjcgMjI3LjM1OSAyMzEuNjI2IDIwOCAyNTYgMjA4WiIgZmlsbD0iIzJEMTgxMCIvPgo8L3N2Zz4K">
   </head>
 
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Register Service Worker
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('SW registered: ', registration);
+            })
+            .catch((registrationError) => {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+    </script>
   </body>
 </html>

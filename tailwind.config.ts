@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -18,6 +19,10 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'cinzel': ['Cinzel', 'serif'],
+				'crimson': ['Crimson Text', 'serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -84,11 +89,37 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(10px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
+				},
+				'sparkle': {
+					'0%, 100%': {
+						transform: 'scale(1) rotate(0deg)',
+						opacity: '1'
+					},
+					'50%': {
+						transform: 'scale(1.2) rotate(180deg)',
+						opacity: '0.8'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.5s ease-out',
+				'sparkle': 'sparkle 2s ease-in-out infinite'
+			},
+			backgroundImage: {
+				'parchment': 'linear-gradient(45deg, #F5E6D3 0%, #E9D4B7 25%, #DCC49A 50%, #D4B896 75%, #C9A96E 100%)',
+				'forest-gradient': 'linear-gradient(135deg, #2D5016 0%, #4A7C59 25%, #6B8E5A 50%, #8B9F65 75%, #A8B373 100%)',
 			}
 		}
 	},
