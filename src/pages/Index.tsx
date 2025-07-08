@@ -1,14 +1,41 @@
 
 import React from 'react';
-import { Castle, Sparkles } from 'lucide-react';
+import { useParams, Link } from 'react-router-dom';
+import { Castle, Sparkles, ArrowLeft } from 'lucide-react';
 import TaskCard from '../components/TaskCard';
 import StoryProgress from '../components/StoryProgress';
 import AddTaskForm from '../components/AddTaskForm';
 import { useTasks } from '../hooks/useTasks';
 
+const storyData = {
+  'enchanted-forest': {
+    title: 'The Enchanted Forest',
+    subtitle: 'Journey through mystical woodlands',
+    icon: '🌲'
+  },
+  'crystal-kingdom': {
+    title: 'The Crystal Kingdom',
+    subtitle: 'Discover shimmering crystal realms',
+    icon: '👑'
+  },
+  'mystic-academy': {
+    title: 'Mystic Academy',
+    subtitle: 'Learn the ancient arts of magic',
+    icon: '🪄'
+  },
+  'dragon-peaks': {
+    title: 'Dragon Peaks',
+    subtitle: 'Scale legendary mountains',
+    icon: '🏰'
+  }
+};
+
 const Index = () => {
+  const { storyId } = useParams();
   const { tasks, toggleTask, addTask } = useTasks();
   const completedTasks = tasks.filter(task => task.completed).length;
+  
+  const currentStory = storyData[storyId as keyof typeof storyData] || storyData['enchanted-forest'];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 relative overflow-hidden">
@@ -20,18 +47,28 @@ const Index = () => {
       </div>
 
       <div className="relative z-10 container mx-auto px-4 py-8 max-w-4xl">
+        {/* Back Navigation */}
+        <div className="mb-6">
+          <Link 
+            to="/"
+            className="inline-flex items-center space-x-2 text-amber-700 hover:text-amber-800 transition-colors group"
+          >
+            <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+            <span className="font-crimson">Back to Realms</span>
+          </Link>
+        </div>
+
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center space-x-4 mb-6">
-            <Castle className="w-12 h-12 text-amber-700" />
+            <span className="text-4xl">{currentStory.icon}</span>
             <h1 className="font-cinzel font-bold text-5xl text-transparent bg-clip-text bg-gradient-to-r from-amber-800 via-orange-700 to-amber-600">
-              Mystic Quest
+              {currentStory.title}
             </h1>
             <Sparkles className="w-12 h-12 text-amber-700 animate-sparkle" />
           </div>
           <p className="font-crimson text-xl text-amber-700 leading-relaxed max-w-2xl mx-auto">
-            Embark on a magical journey where every completed task unveils a piece of an enchanted story. 
-            Your productivity becomes the key to unlocking mystical realms and ancient wisdom.
+            {currentStory.subtitle}. Your productivity becomes the key to unlocking mystical realms and ancient wisdom.
           </p>
         </div>
 
